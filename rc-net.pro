@@ -5,13 +5,14 @@ unix:PLATFORM = "unix"
 CONFIG(debug,release|debug) {
     !build_pass:message("DEBUG")
     DEBUGRELEASE = "debug"
-    DESTDIR = ./
+    DESTDIR = ./dist/debug/$${PLATFORM}
 }
 CONFIG(release,release|debug) {
     !build_pass:message("RELEASE")
     DEBUGRELEASE = "release"
-    DESTDIR = ./DIST-$${PLATFORM}
+    DESTDIR = ./dist/release/$${PLATFORM}
 }
+message("TARGET:" $${DESTDIR})
 
 greaterThan(QT_MAJOR_VERSION, 4) {
    QT *= widgets

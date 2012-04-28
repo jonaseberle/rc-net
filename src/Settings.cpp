@@ -1,12 +1,13 @@
 #include "Settings.h"
 #include <QMetaEnum>
 #include <QDebug>
+#include <QApplication>
 
 // singleton instance
 Settings *settingsInstance = 0;
 Settings *Settings::getInstance(bool createIfNoInstance)
 {
-    return getInstance("conf", createIfNoInstance);
+    return getInstance("rc-net.conf", createIfNoInstance);
 }
 Settings *Settings::getInstance(QString fileName, bool createIfNoInstance)
 {

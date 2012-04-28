@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
 
     if (QCoreApplication::arguments().contains("--help")) {
         std::cout << "\tmakeconf       writes a clean config file\n"
-                     "\tconf=FILENAME  use this config file\n"
+                     "\tconf=FILENAME  use this config file (default: rc-net.conf)\n"
                      "\theadless       no GUI\n"
                 ;
         return 0;
@@ -35,6 +35,8 @@ int main(int argc, char *argv[]) {
         Settings::getInstance(rx.cap(1));
     if (QCoreApplication::arguments().contains("makeconf"))
         Settings::getInstance()->writeout();
+
+    qDebug() << Settings::compileTime();
 
     Net *net = Net::getInstance();
     QStringList provides = QStringList("tx");

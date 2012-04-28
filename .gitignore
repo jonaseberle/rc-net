@@ -1,3 +1,6 @@
+temp
+dist
+*.pro.user
 # Compiled Object files
 *.slo
 *.lo

@@ -26,6 +26,10 @@ public:
     static Settings *getInstance(bool createIfNoInstance = true);
     static Settings *getInstance(QString fileName, bool createIfNoInstance = true);
 
+    static const QString compileTime() { return QString("%1 %2").arg(__DATE__).arg(__TIME__); }
+    static const QString gitRevHash() { return QString("$Id$"); }
+    static const QString version() { return QString("0.1"); }
+
 private:
     explicit Settings(QString fileName, QObject *parent = 0) :
         QObject(parent)
