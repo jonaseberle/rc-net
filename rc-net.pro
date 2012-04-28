@@ -12,41 +12,48 @@ CONFIG(release,release|debug) {
     DEBUGRELEASE = "release"
     DESTDIR = ./DIST-$${PLATFORM}
 }
+
+greaterThan(QT_MAJOR_VERSION, 4) {
+   QT *= widgets
+#   QT *= quick1
+} else {
+#   QT *= declarative
+}
 QT       *= core gui network
 
-TARGET = rc
+TARGET = rc-net
 TEMPLATE = app
 
 # temp files
-MOC_DIR = ./temp/$${PLATFORM}-$${DEBUGRELEASE}
-UI_DIR = ./temp/$${PLATFORM}-$${DEBUGRELEASE}
+MOC_DIR = ./temp/
+UI_DIR = ./temp/
+RCC_DIR = ./temp/
 OBJECTS_DIR = ./temp/$${PLATFORM}-$${DEBUGRELEASE}
-RCC_DIR = ./temp/$${PLATFORM}-$${DEBUGRELEASE}
 
-SOURCES += main.cpp\
-        Window.cpp \
-    Peer.cpp \
-    Net.cpp \
-    Settings.cpp \
-    Input.cpp \
-    InputDialog.cpp \
-    Inputs.cpp
+SOURCES += src/main.cpp\
+        src/Window.cpp \
+     src/Peer.cpp \
+     src/Net.cpp \
+     src/Settings.cpp \
+     src/Input.cpp \
+     src/InputDialog.cpp \
+     src/Inputs.cpp
 
-HEADERS  += Window.h \
-    Peer.h \
-    Net.h \
-    Settings.h \
-    InputAxisWidget.h \
-    InputBtnWidget.h \
-    Input.h \
-    InputDialog.h \
-    Inputs.h
+HEADERS  +=  src/Window.h \
+     src/Peer.h \
+     src/Net.h \
+     src/Settings.h \
+     src/InputAxisWidget.h \
+     src/InputBtnWidget.h \
+     src/Input.h \
+     src/InputDialog.h \
+     src/Inputs.h
 
-FORMS    += Window.ui \
-    InputAxisWidget.ui \
-    InputBtnWidget.ui \
-    InputDialog.ui
+FORMS    +=  src/Window.ui \
+     src/InputAxisWidget.ui \
+     src/InputBtnWidget.ui \
+     src/InputDialog.ui
 
-OTHER_FILES += CHANGELOG \
-    README \
+OTHER_FILES += CHANGELOG.md \
+    README.md \
     conf
